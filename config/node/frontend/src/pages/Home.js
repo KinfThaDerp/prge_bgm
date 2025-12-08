@@ -1,5 +1,6 @@
 import React from 'react';
 import {Typography, Button} from '@mui/material';
+import {Link} from "react-router-dom";
 
 function Home(props) {
     return (
@@ -9,7 +10,16 @@ function Home(props) {
                 Geoportal tematyczny poświęcony danym przestrzennym przetwarzanym
             </Typography>
 
-            <Button className="home__button" variant='contained' size='large'> START </Button>
+            <Button
+                className="home__button"
+                variant='contained'
+                size='large'
+                component={Link}
+                to='services'
+            >
+                START
+            </Button>
+
         </div>
     );
 }
