@@ -33,7 +33,7 @@ jobs:
           cache-dependency-path: config/node/frontend/package-lock.json
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
