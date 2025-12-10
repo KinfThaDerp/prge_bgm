@@ -1,5 +1,5 @@
-# prge 2025_12
-prge demo app for students
+# prge bgm
+prge demo app by student
 
 
 ### how to start
