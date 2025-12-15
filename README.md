@@ -15,4 +15,5 @@ docker system prune --volumes
 ```
 
 ```bash
-doccker exec -it prge_2025_geoserver bash```
+doccker exec -it prge_2025_geoserver bash
+```
