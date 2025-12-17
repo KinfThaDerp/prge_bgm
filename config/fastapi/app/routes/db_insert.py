@@ -1,26 +1,34 @@
 from fastapi import APIRouter
 from sqlalchemy import create_engine, text
 
+from app.settings import db_name, db_user, db_password
+
 router_insert = APIRouter()
 
-def connect_to_db():
+def connect_to_db(db_name:str, db_user:str, db_password:str):
     return create_engine(
-        f"postgresql://postgres:postgres@localhost:5432/postgres"
+        f"jdbc:postgresql://{db_name}:{db_user}@localhost:5432/{db_password}"
     )
 
 @router_insert.get("/insert_user")
 async def insert_user():
 
     try:
-        db_connection = connect_to_db()
+        db_connection = connect_to_db(db_user=db_user, db_password=db_password, db_name=db_name)
 
-        sql_query = text("""
+        params = {
+            "name": "Asia",
+            "posts": 4,
+            "location": "Warszawa"
+        }
+
+        sql_query = """
                     INSERT INTO public.users (name, posts, location) 
-                    VALUES ('Janek', 10, 'Gdańsk')
-                    """)
+                    VALUES (:name, :posts, :location)
+                    """
 
         with db_connection.connect() as conn:
-            result = await conn.execute(sql_query)
+            result = conn.execute(sql_query)
             conn.commit()
             print(result)
 
