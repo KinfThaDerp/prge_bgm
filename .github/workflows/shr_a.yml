@@ -12,8 +12,8 @@ permissions:
   packages: write
 
 jobs:
-  build-and-push:
-    name: Build & Push
+  build-and-deploy:
+    name: Build & Deploy
     runs-on:
       - self-hosted
     environment: ${{github.ref_name}}
