@@ -32,6 +32,21 @@ services:
     volumes:
       - ../.tmp/data:/opt/geoserver_data
       - ../.tmp/geoserver-config:/opt/geoserver/data_dir
+  fastapi:
+    build:
+      context: ..
+      dockerfile: docker/fastapi/Dockerfile
+    image: 'prge_bgm_fastapi'
+    container_name: 'prge_bgm_fastapi'
+#    depends_on:
+#      - postgis
+#    environment:
+#      - *env-postgres-db
+#      - *env-postgres-user
+#      - *env-postgres-password
+
+    ports:
+      - 10000:10000
 
 
 volumes:
