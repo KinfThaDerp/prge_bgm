@@ -28,7 +28,7 @@ jobs:
           POSTGRES_USER: ${{secrets.POSTGRES_DB}}
           POSTGRES_PASSWORD: ${{secrets.POSTGRES_DB}}
         run: |
-          docker-compose -f ./docker-compose/docker-compose-prge-local.yml --env-file .env -p local-prge up --build -d
+          docker-compose -f ./docker-compose/docker-compose-prge-local.yml -p remote-prge up --build -d
 
 
 #      - name: Login to GHCR
