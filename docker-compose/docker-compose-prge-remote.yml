@@ -32,7 +32,7 @@ services:
 #    volumes:
 #      - ../.tmp/data:/opt/geoserver_data
 #      - ../.tmp/geoserver-config:/opt/geoserver/data_dir
-
+#
 
 volumes:
   postgis-local-data:
