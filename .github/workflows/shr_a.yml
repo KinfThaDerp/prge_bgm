@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Print
-        run: echo 'witaj!'
+        run: echo 'witaj'
 
       - name: uruchom środowisko docker-compose
         env:
