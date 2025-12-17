@@ -10,21 +10,23 @@ def connect_to_db(db_name:str, db_user:str, db_password:str):
         f"jdbc:postgresql://{db_name}:{db_user}@localhost:5432/{db_password}"
     )
 
-@router_insert.get("/insert_user")
-async def insert_user():
+@router_insert.post("/insert_user")
+async def insert_user(request):
 
     try:
         db_connection = connect_to_db(db_user=db_user, db_password=db_password, db_name=db_name)
 
+#TODO TO DO ZROBIENIA DYNAMICZNIE
+
         params = {
-            "name": "Asia",
-            "posts": 4,
-            "location": "Warszawa"
+            "name": request.name,
+            "posts": request.posts,
+            "location": request.location
         }
 
         sql_query = """
-                    INSERT INTO public.users (name, posts, location) 
-                    VALUES (:name, :posts, :location)
+                    insert into public.users (name, posts, location) 
+                    values (:name, :posts, :location); \
                     """
 
         with db_connection.connect() as conn:
